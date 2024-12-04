@@ -19,7 +19,7 @@ public class ServidorPublicoRunner implements CommandLineRunner {
         this.servidorService = servidorService;
     }
 
-    @PostConstruct
+
     public void listAll(){
         List<com.servidorPublico.servidorPublicoDb.entity.ServidorPublico> servidoresPublicos = servidorService.listAll();
 
@@ -60,44 +60,36 @@ public class ServidorPublicoRunner implements CommandLineRunner {
             ServidorPublico novoservidor = new ServidorPublico();
             novoservidor.setMatricula(matricula);
 
-            String foto = JOptionPane.showInputDialog(JOptionPane.showInputDialog("Digite foto do novo servidor"));
+            String foto = JOptionPane.showInputDialog("Digite foto do novo servidor");
+            String nome = JOptionPane.showInputDialog("Digite nome do novo servidor");
+            String orgao = JOptionPane.showInputDialog("Digite orgao do novo servidor");
+            String vinculo = JOptionPane.showInputDialog("Digite vinculo do novo servidor");
+            String cargo = JOptionPane.showInputDialog("Digite cargo do novo servidor");
+            String lotacao = JOptionPane.showInputDialog("Digite lotacao do novo servidor");
+            String exercicio = JOptionPane.showInputDialog("Digite exercicio do novo servidor");
+            String email = JOptionPane.showInputDialog("Digite email do novo servidor");
+            String telefone = JOptionPane.showInputDialog("Digite telefone do novo servidor");
+            String celular = JOptionPane.showInputDialog("Digite celular do novo servidor");
+            String cpf = JOptionPane.showInputDialog("Digite cpf do novo servidor");
+            String naturalidade = JOptionPane.showInputDialog("Digite naturalidade do novo servidor");
+            
             novoservidor.setFoto(foto);
-
-            String nome = JOptionPane.showInputDialog(JOptionPane.showInputDialog("Digite foto do novo servidor"));
             novoservidor.setNome(nome);
-
-            String orgao = JOptionPane.showInputDialog(JOptionPane.showInputDialog("Digite foto do novo servidor"));
             novoservidor.setOrgao(orgao);
-
-            String vinculo = JOptionPane.showInputDialog(JOptionPane.showInputDialog("Digite foto do novo servidor"));
             novoservidor.setVinculo(vinculo);
-
-            String cargo = JOptionPane.showInputDialog(JOptionPane.showInputDialog("Digite foto do novo servidor"));
             novoservidor.setCargo(cargo);
-
-            String lotacao = JOptionPane.showInputDialog(JOptionPane.showInputDialog("Digite foto do novo servidor"));
             novoservidor.setLotacao(lotacao);
-
-            String exercicio = JOptionPane.showInputDialog(JOptionPane.showInputDialog("Digite foto do novo servidor"));
             novoservidor.setExercicio(exercicio);
-
-            String email = JOptionPane.showInputDialog(JOptionPane.showInputDialog("Digite foto do novo servidor"));
             novoservidor.setEmail(email);
-
-            String telefone = JOptionPane.showInputDialog(JOptionPane.showInputDialog("Digite foto do novo servidor"));
             novoservidor.setTelefone(telefone);
-
-            String celular = JOptionPane.showInputDialog(JOptionPane.showInputDialog("Digite foto do novo servidor"));
             novoservidor.setCelular(celular);
-
-            String cpf = JOptionPane.showInputDialog(JOptionPane.showInputDialog("Digite foto do novo servidor"));
             novoservidor.setCpf(cpf);
-
-            String naturalidade = JOptionPane.showInputDialog(JOptionPane.showInputDialog("Digite foto do novo servidor"));
             novoservidor.setNaturalidade(naturalidade);
 
+            servidorService.save(novoservidor);
+
         }else{
-            System.out.println("Servidor não encontrado");
+            System.out.println("Servidor já existente");
         }
     }
     public void update(){
